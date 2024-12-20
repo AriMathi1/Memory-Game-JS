@@ -39,6 +39,8 @@ function disableCards() {
     secondCard.removeEventListener('click', flipCard);
 
     resetBoard();
+
+    checkWinCondition();
 }
 
 function unflipCards() {
@@ -80,6 +82,15 @@ function restartGame() {
     resetBoard();
     shuffle();
 };
+
+function checkWinCondition() {
+    const allFlipped = Array.from(cards).every(card => card.classList.contains('flip'));
+    if (allFlipped) {
+        setTimeout(() => {
+            alert("You Won!"); // Display alert message after slight delay
+        }, 500);
+    }
+}
 
 shuffle();
 
